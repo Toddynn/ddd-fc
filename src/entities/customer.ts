@@ -26,6 +26,10 @@ export default class Customer {
 		}
 	}
 
+	changeName(name: string) {
+		this._name = name;
+	}
+
 	changeAddress(address: Address) {
 		this._address = address;
 	}
@@ -37,5 +41,9 @@ export default class Customer {
 
 	deactivate() {
 		this._active = false;
+	}
+
+	isActive() {
+		return this._active;
 	}
 }
