@@ -11,13 +11,19 @@ describe('Customer unit tests', () => {
 	it('should throw error when name is empty', () => {
 		expect(() => {
 			const customer = new Customer('1', '', 'j@j.com', '123');
+		}).toThrow('Name is required');
+	});
+
+	it('should throw error when name is less than 3 characters', () => {
+		expect(() => {
+			const customer = new Customer('1', 'ab', 'j@j.com', '123');
 		}).toThrow('Name must have at least 3 characters');
 	});
 
 	it('should change name', () => {
 		const customer = new Customer('1', 'John', 'j@j.com', '123');
 		customer.changeName('Jane');
-		expect(customer._name).toBe('Jane');
+		expect(customer.getName()).toBe('Jane');
 	});
 
 	it('should activate customer', () => {

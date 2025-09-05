@@ -1,9 +1,4 @@
-class DomainError extends Error {
-	constructor(message: string) {
-		super(message);
-		this.name = 'DomainError';
-	}
-}
+import { DomainError } from '../utils/errors/domain-error';
 
 export default class Product {
 	private _id: string;
@@ -31,9 +26,7 @@ export default class Product {
 	}
 
 	changePrice(price: number) {
-		if (price < 0) {
-			throw new Error('Price must be greater or equal to 0');
-		}
+		Product.validatePrice(price);
 		this._price = price;
 	}
 

@@ -2,28 +2,27 @@ import type Address from './address';
 
 //* Uma entidade deve, a todo momento, permanecer consistente, e validar-se
 export default class Customer {
-	_id: string;
-	_name: string;
-	_email: string = '';
-	_phone: string = '';
-	_address!: Address;
-	_active: boolean = false;
+	private _id: string;
+	private _name: string;
+	private _email: string = '';
+	private _phone: string = '';
+	private _address!: Address;
+	private _active: boolean = false;
 
 	constructor(id: string, name: string, email: string, phone: string) {
+		Customer.validateId(id);
+		Customer.validateName(name);
+		Customer.validateEmail(email);
+		Customer.validatePhone(phone);
+
 		this._id = id;
 		this._name = name;
 		this._email = email;
 		this._phone = phone;
-		this.validateConstructor();
 	}
 
-	validateConstructor() {
-		if (!this._id) {
-			throw new Error('Id is required');
-		}
-		if (this._name.length < 3) {
-			throw new Error('Name must have at least 3 characters');
-		}
+	getName() {
+		return this._name;
 	}
 
 	changeName(name: string) {
@@ -45,5 +44,24 @@ export default class Customer {
 
 	isActive() {
 		return this._active;
+	}
+
+	private static validateId(id: string) {
+		if (!id) throw new Error('Id is required');
+	}
+
+	private static validateName(name: string) {
+		if (!name) throw new Error('Name is required');
+		if (name.length < 3) throw new Error('Name must have at least 3 characters');
+	}
+
+	private static validateEmail(email: string) {
+		//* alguma validação de email real
+		if (!email) throw new Error('Email should be valid email address');
+	}
+
+	private static validatePhone(phone: string) {
+		//* alguma validação de telefone real
+		if (!phone) throw new Error('Phone should be valid phone number');
 	}
 }
