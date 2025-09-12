@@ -25,6 +25,10 @@ export default class Customer {
 		return this._name;
 	}
 
+	getId() {
+		return this._id;
+	}
+
 	changeName(name: string) {
 		this._name = name;
 	}
