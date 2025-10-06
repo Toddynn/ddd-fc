@@ -1,5 +1,5 @@
 import Order from './order';
-import { OrderItem } from './orderItem';
+import OrderItem from './orderItem';
 import Product from './product';
 
 const product1 = new Product('1', 'Product 1', 100);

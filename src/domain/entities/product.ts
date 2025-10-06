@@ -1,4 +1,4 @@
-import { DomainError } from '../utils/errors/domain-error';
+import { DomainError } from '../../utils/errors/domain-error';
 
 export default class Product {
 	private _id: string;

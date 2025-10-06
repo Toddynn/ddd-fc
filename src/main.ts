@@ -1,8 +1,8 @@
-import Address from './entities/address';
-import Customer from './entities/customer';
-import Order from './entities/order';
-import { OrderItem } from './entities/orderItem';
-import Product from './entities/product';
+import Address from './domain/entities/address';
+import Customer from './domain/entities/customer';
+import Order from './domain/entities/order';
+import OrderItem from './domain/entities/orderItem';
+import Product from './domain/entities/product';
 
 // Customer aggregate
 const customer = new Customer('1', 'John', 'j@j.com', '123');

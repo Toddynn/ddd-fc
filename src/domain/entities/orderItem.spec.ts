@@ -1,4 +1,4 @@
-import { OrderItem } from './orderItem';
+import OrderItem from './orderItem';
 
 describe('OrderItem unit tests', () => {
 	it('should throw error when id is empty', () => {

@@ -8,6 +8,7 @@ export default class Customer {
 	private _phone: string = '';
 	private _address!: Address;
 	private _active: boolean = false;
+	private _rewardPoints: number = 0;
 
 	constructor(id: string, name: string, email: string, phone: string) {
 		Customer.validateId(id);
@@ -29,6 +30,10 @@ export default class Customer {
 		return this._id;
 	}
 
+	getRewardPoints() {
+		return this._rewardPoints;
+	}
+
 	changeName(name: string) {
 		this._name = name;
 	}
@@ -48,6 +53,10 @@ export default class Customer {
 
 	isActive() {
 		return this._active;
+	}
+
+	addRewardPoints(points: number) {
+		this._rewardPoints += points;
 	}
 
 	private static validateId(id: string) {
