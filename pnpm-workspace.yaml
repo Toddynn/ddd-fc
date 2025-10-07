@@ -1,0 +1,4 @@
+onlyBuiltDependencies:
+  - '@swc/core'
+  - sqlite3
+  - unrs-resolver

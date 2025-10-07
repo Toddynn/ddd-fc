@@ -15,18 +15,6 @@ export default class Order {
 		this._items = OrderItems;
 	}
 
-	validateConstructor() {
-		if (!this._id) {
-			throw new Error('Id is required');
-		}
-		if (!this._customerId) {
-			throw new Error('CustomerId is required');
-		}
-		if (this._items.length === 0) {
-			throw new Error('OrderItems are required');
-		}
-	}
-
 	getTotal() {
 		return this._items.reduce((total, item) => total + item.getPriceByQuantity(), 0);
 	}
