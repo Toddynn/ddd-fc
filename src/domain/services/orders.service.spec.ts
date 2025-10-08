@@ -22,7 +22,7 @@ describe('OrderService unit tests', () => {
 
 		const order = OrdersService.placeOrder(customer, [orderItem1]);
 
-		expect(customer.getRewardPoints()).toBe(10);
+		expect(customer.rewardPoints).toBe(10);
 		expect(order.getTotal()).toBe(20);
 	});
 });

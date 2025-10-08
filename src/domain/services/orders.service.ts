@@ -8,7 +8,7 @@ export default class OrdersService {
 	}
 
 	static placeOrder(customer: Customer, orderItems: OrderItem[]): Order {
-		const order = new Order('1', customer.getId(), orderItems);
+		const order = new Order('1', customer.id, orderItems);
 		customer.addRewardPoints(order.getTotal() / 2);
 		return order;
 	}

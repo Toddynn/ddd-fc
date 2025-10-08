@@ -23,7 +23,7 @@ describe('Customer unit tests', () => {
 	it('should change name', () => {
 		const customer = new Customer('1', 'John', 'j@j.com', '123');
 		customer.changeName('Jane');
-		expect(customer.getName()).toBe('Jane');
+		expect(customer.name).toBe('Jane');
 	});
 
 	it('should activate customer', () => {
@@ -33,13 +33,13 @@ describe('Customer unit tests', () => {
 
 		customer.activate();
 
-		expect(customer.isActive()).toBe(true);
+		expect(customer.active).toBe(true);
 	});
 
 	it('should deactivate customer', () => {
 		const customer = new Customer('1', 'John', 'j@j.com', '123');
 		customer.deactivate();
-		expect(customer.isActive()).toBe(false);
+		expect(customer.active).toBe(false);
 	});
 
 	it('should throw error when address is undefined when you activate a customer', () => {
@@ -51,12 +51,12 @@ describe('Customer unit tests', () => {
 
 	it('should add reward points', () => {
 		const customer = new Customer('1', 'John', 'j@j.com', '123');
-		expect(customer.getRewardPoints()).toBe(0);
+		expect(customer.rewardPoints).toBe(0);
 
 		customer.addRewardPoints(10);
-		expect(customer.getRewardPoints()).toBe(10);
+		expect(customer.rewardPoints).toBe(10);
 
 		customer.addRewardPoints(10);
-		expect(customer.getRewardPoints()).toBe(20);
+		expect(customer.rewardPoints).toBe(20);
 	});
 });

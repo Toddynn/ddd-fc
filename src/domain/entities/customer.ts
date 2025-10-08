@@ -10,7 +10,7 @@ export default class Customer {
 	private _active: boolean = false;
 	private _rewardPoints: number = 0;
 
-	constructor(id: string, name: string, email: string, phone: string) {
+	constructor(id: string, name: string, email: string, phone: string, address?: Address) {
 		Customer.validateId(id);
 		Customer.validateName(name);
 		Customer.validateEmail(email);
@@ -20,18 +20,35 @@ export default class Customer {
 		this._name = name;
 		this._email = email;
 		this._phone = phone;
+		this._address = address;
 	}
 
-	getName() {
+	get name() {
 		return this._name;
 	}
 
-	getId() {
+	get id() {
 		return this._id;
 	}
 
-	getRewardPoints() {
+	get email() {
+		return this._email;
+	}
+
+	get phone() {
+		return this._phone;
+	}
+
+	get rewardPoints() {
 		return this._rewardPoints;
+	}
+
+	get address() {
+		return this._address;
+	}
+
+	get active() {
+		return this._active;
 	}
 
 	changeName(name: string) {
@@ -49,10 +66,6 @@ export default class Customer {
 
 	deactivate() {
 		this._active = false;
-	}
-
-	isActive() {
-		return this._active;
 	}
 
 	addRewardPoints(points: number) {

@@ -18,6 +18,6 @@ const product2 = new Product('2', 'product 2', 200);
 const orderItem1 = new OrderItem('1', product1.getId(), product1.getName(), product1.getPrice(), 1);
 const orderItem2 = new OrderItem('2', product2.getId(), product2.getName(), product2.getPrice(), 2);
 
-const order = new Order('1', customer.getId(), [orderItem1, orderItem2]);
+const order = new Order('1', customer.id, [orderItem1, orderItem2]);
 
 console.log(order.getTotal());
