@@ -1,6 +1,9 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Customer } from '../../domain/entities/customer';
 import { CustomerModel } from '../database/sequelize/models/customer.model';
+import { OrderModel } from '../database/sequelize/models/order.model';
+import { OrderItemModel } from '../database/sequelize/models/order-item.model';
+import { ProductModel } from '../database/sequelize/models/product.model';
 import { CustomerRepository } from './customer.repository';
 
 describe('CustomerRepository unit tests', () => {
@@ -13,7 +16,7 @@ describe('CustomerRepository unit tests', () => {
 			logging: false,
 			sync: { force: true },
 		});
-		sequelize.addModels([CustomerModel]);
+		sequelize.addModels([CustomerModel, OrderModel, OrderItemModel, ProductModel]);
 
 		await sequelize.sync();
 	});

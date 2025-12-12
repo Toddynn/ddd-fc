@@ -1,4 +1,6 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
+
+const getOrderModel = () => require('./order.model').OrderModel;
 
 @Table({
 	tableName: 'customers',
@@ -38,4 +40,7 @@ export class CustomerModel extends Model {
 
 	@Column({ allowNull: true })
 	declare state: string;
+
+	@HasMany(() => getOrderModel())
+	declare orders: Array<ReturnType<typeof getOrderModel>>;
 }

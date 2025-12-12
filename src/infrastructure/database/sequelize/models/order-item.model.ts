@@ -1,6 +1,7 @@
 import { BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
-import { OrderModel } from './order.model';
 import { ProductModel } from './product.model';
+
+const getOrderModel = () => require('./order.model').OrderModel;
 
 @Table({
 	tableName: 'orders_items',
@@ -11,20 +12,6 @@ export class OrderItemModel extends Model {
 	@Column
 	declare id: string;
 
-	@ForeignKey(() => OrderModel)
-	@Column({ allowNull: false })
-	declare order_id: string;
-
-	@BelongsTo(() => OrderModel)
-	declare order: OrderModel;
-
-	@ForeignKey(() => ProductModel)
-	@Column({ allowNull: false })
-	declare product_id: string;
-
-	@BelongsTo(() => ProductModel)
-	declare product: ProductModel;
-
 	@Column({ allowNull: false })
 	declare quantity: number;
 
@@ -33,4 +20,18 @@ export class OrderItemModel extends Model {
 
 	@Column({ allowNull: false })
 	declare price: number;
+
+	@ForeignKey(() => getOrderModel())
+	@Column({ allowNull: false })
+	declare order_id: string;
+
+	@BelongsTo(() => getOrderModel())
+	declare order: ReturnType<typeof getOrderModel>;
+
+	@ForeignKey(() => ProductModel)
+	@Column({ allowNull: false })
+	declare product_id: string;
+
+	@BelongsTo(() => ProductModel)
+	declare product: ProductModel;
 }
