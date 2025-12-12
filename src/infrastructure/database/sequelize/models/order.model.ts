@@ -1,5 +1,6 @@
 import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { CustomerModel } from './customer.model';
+import type { OrderItemModel } from './order-item.model';
 
 const getOrderItemModel = () => require('./order-item.model').OrderItemModel;
 
@@ -23,5 +24,5 @@ export class OrderModel extends Model {
 	declare customer: CustomerModel;
 
 	@HasMany(() => getOrderItemModel())
-	declare items: Array<ReturnType<typeof getOrderItemModel>>;
+	declare items: Array<OrderItemModel>;
 }

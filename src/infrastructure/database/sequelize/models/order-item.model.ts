@@ -1,4 +1,5 @@
 import { BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import type { OrderModel } from './order.model';
 import { ProductModel } from './product.model';
 
 const getOrderModel = () => require('./order.model').OrderModel;
@@ -26,7 +27,7 @@ export class OrderItemModel extends Model {
 	declare order_id: string;
 
 	@BelongsTo(() => getOrderModel())
-	declare order: ReturnType<typeof getOrderModel>;
+	declare order: OrderModel;
 
 	@ForeignKey(() => ProductModel)
 	@Column({ allowNull: false })

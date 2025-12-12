@@ -1,4 +1,5 @@
 import { Column, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import type { OrderModel } from './order.model';
 
 const getOrderModel = () => require('./order.model').OrderModel;
 
@@ -42,5 +43,5 @@ export class CustomerModel extends Model {
 	declare state: string;
 
 	@HasMany(() => getOrderModel())
-	declare orders: Array<ReturnType<typeof getOrderModel>>;
+	declare orders: Array<OrderModel>;
 }
