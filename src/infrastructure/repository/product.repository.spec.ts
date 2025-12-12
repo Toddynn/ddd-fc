@@ -5,6 +5,7 @@ import { ProductRepository } from './product.repository';
 
 describe('ProductRepository unit tests', () => {
 	let sequelize: Sequelize;
+	let productRepository: ProductRepository;
 
 	beforeEach(async () => {
 		sequelize = new Sequelize({
@@ -16,6 +17,8 @@ describe('ProductRepository unit tests', () => {
 		sequelize.addModels([ProductModel]);
 
 		await sequelize.sync();
+
+		productRepository = new ProductRepository();
 	});
 
 	afterEach(async () => {
@@ -23,7 +26,6 @@ describe('ProductRepository unit tests', () => {
 	});
 
 	it('should create a product', async () => {
-		const productRepository = new ProductRepository();
 		const product = new Product('1', 'Product 1', 100);
 		await productRepository.create(product);
 		const productModel = await ProductModel.findOne({ where: { id: '1' } });
@@ -35,7 +37,6 @@ describe('ProductRepository unit tests', () => {
 	});
 
 	it('should find a product', async () => {
-		const productRepository = new ProductRepository();
 		const product = new Product('1', 'Product 1', 100);
 
 		await productRepository.create(product);
@@ -52,7 +53,6 @@ describe('ProductRepository unit tests', () => {
 	});
 
 	it('should find all products', async () => {
-		const productRepository = new ProductRepository();
 		const product = new Product('1', 'Product 1', 100);
 		const product2 = new Product('2', 'Product 2', 200);
 
@@ -72,7 +72,6 @@ describe('ProductRepository unit tests', () => {
 	});
 
 	it('should update a product', async () => {
-		const productRepository = new ProductRepository();
 		const product = new Product('1', 'Product 1', 100);
 
 		await productRepository.create(product);

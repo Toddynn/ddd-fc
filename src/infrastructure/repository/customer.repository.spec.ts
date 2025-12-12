@@ -8,6 +8,7 @@ import { CustomerRepository } from './customer.repository';
 
 describe('CustomerRepository unit tests', () => {
 	let sequelize: Sequelize;
+	let customerRepository: CustomerRepository;
 
 	beforeEach(async () => {
 		sequelize = new Sequelize({
@@ -19,6 +20,8 @@ describe('CustomerRepository unit tests', () => {
 		sequelize.addModels([CustomerModel, OrderModel, OrderItemModel, ProductModel]);
 
 		await sequelize.sync();
+
+		customerRepository = new CustomerRepository();
 	});
 
 	afterEach(async () => {
@@ -26,8 +29,6 @@ describe('CustomerRepository unit tests', () => {
 	});
 
 	it('should create a customer', async () => {
-		const customerRepository = new CustomerRepository();
-
 		const customer = new Customer('1', 'Customer 1', 'customer@gmail.com', '123123123');
 		await customerRepository.create(customer);
 
