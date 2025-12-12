@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
-import Product from '../../domain/entities/product';
-import ProductModel from '../database/sequelize/models/product.model';
-import ProductRepository from './product.repository';
+import { Product } from '../../domain/entities/product';
+import { ProductModel } from '../database/sequelize/models/product.model';
+import { ProductRepository } from './product.repository';
 
 describe('ProductRepository unit tests', () => {
 	let sequelize: Sequelize;
@@ -45,9 +45,9 @@ describe('ProductRepository unit tests', () => {
 		const foundProduct = await productRepository.find('1');
 
 		expect(productModel.toJSON()).toStrictEqual({
-			id: foundProduct.getId(),
-			name: foundProduct.getName(),
-			price: foundProduct.getPrice(),
+			id: foundProduct.id,
+			name: foundProduct.name,
+			price: foundProduct.price,
 		});
 	});
 
@@ -64,10 +64,10 @@ describe('ProductRepository unit tests', () => {
 
 		expect(productModel.map((p) => p.toJSON())).toStrictEqual(
 			foundProducts.map((p) => ({
-				id: p.getId(),
-				name: p.getName(),
-				price: p.getPrice(),
-			}))
+				id: p.id,
+				name: p.name,
+				price: p.price,
+			})),
 		);
 	});
 
@@ -82,9 +82,9 @@ describe('ProductRepository unit tests', () => {
 		const foundProduct = await productRepository.find('1');
 
 		expect(productModel.toJSON()).toStrictEqual({
-			id: foundProduct.getId(),
-			name: foundProduct.getName(),
-			price: foundProduct.getPrice(),
+			id: foundProduct.id,
+			name: foundProduct.name,
+			price: foundProduct.price,
 		});
 
 		product.changeName('Product 2');
@@ -95,9 +95,9 @@ describe('ProductRepository unit tests', () => {
 
 		const foundProduct2 = await productRepository.find('1');
 		expect(productModel2.toJSON()).toStrictEqual({
-			id: foundProduct2.getId(),
-			name: foundProduct2.getName(),
-			price: foundProduct2.getPrice(),
+			id: foundProduct2.id,
+			name: foundProduct2.name,
+			price: foundProduct2.price,
 		});
 	});
 });

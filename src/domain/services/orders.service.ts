@@ -1,8 +1,8 @@
-import Customer from '../entities/customer';
-import Order from '../entities/order';
-import OrderItem from '../entities/orderItem';
+import type { Customer } from '../entities/customer';
+import { Order } from '../entities/order';
+import type { OrderItem } from '../entities/orderItem';
 
-export default class OrdersService {
+export class OrdersService {
 	static getTotal(orders: Order[]): number {
 		return orders.reduce((total, order) => total + order.getTotal(), 0);
 	}

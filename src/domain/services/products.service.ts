@@ -1,10 +1,10 @@
-import Product from '../entities/product';
+import type { Product } from '../entities/product';
 
-export default class ProductsService {
+export class ProductsService {
 	static increasePrice(products: Array<Product>, percentage: number): void {
-		products.forEach((product) => {
-			const oldPrice = product.getPrice();
+		for (const product of products) {
+			const oldPrice = product.price;
 			product.changePrice(oldPrice + (oldPrice * percentage) / 100);
-		});
+		}
 	}
 }

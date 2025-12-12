@@ -1,13 +1,13 @@
-import Product from '../../domain/entities/product';
-import ProductRepositoryInterface from '../../domain/repository/product.repository.interface';
-import ProductModel from '../database/sequelize/models/product.model';
+import { Product } from '../../domain/entities/product';
+import type { ProductRepositoryInterface } from '../../domain/repository/product.repository.interface';
+import { ProductModel } from '../database/sequelize/models/product.model';
 
-export default class ProductRepository implements ProductRepositoryInterface {
+export class ProductRepository implements ProductRepositoryInterface {
 	async create(entity: Product): Promise<void> {
 		await ProductModel.create({
-			id: entity.getId(),
-			name: entity.getName(),
-			price: entity.getPrice(),
+			id: entity.id,
+			name: entity.name,
+			price: entity.price,
 		});
 	}
 
@@ -26,10 +26,10 @@ export default class ProductRepository implements ProductRepositoryInterface {
 	async update(entity: Product): Promise<void> {
 		await ProductModel.update(
 			{
-				name: entity.getName(),
-				price: entity.getPrice(),
+				name: entity.name,
+				price: entity.price,
 			},
-			{ where: { id: entity.getId() } }
+			{ where: { id: entity.id } },
 		);
 	}
 

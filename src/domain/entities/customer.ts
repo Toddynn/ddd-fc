@@ -1,7 +1,7 @@
-import type Address from './address';
+import type { Address } from './address';
 
 //* Uma entidade deve, a todo momento, permanecer consistente, e validar-se
-export default class Customer {
+export class Customer {
 	private _id: string;
 	private _name: string;
 	private _email: string = '';

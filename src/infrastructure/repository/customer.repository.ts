@@ -1,8 +1,8 @@
-import Customer from '../../domain/entities/customer';
-import CustomerRepositoryInterface from '../../domain/repository/customer.repository.interface';
-import CustomerModel from '../database/sequelize/models/customer.model';
+import type { Customer } from '../../domain/entities/customer';
+import type { CustomerRepositoryInterface } from '../../domain/repository/customer.repository.interface';
+import { CustomerModel } from '../database/sequelize/models/customer.model';
 
-export default class CustomerRepository implements CustomerRepositoryInterface {
+export class CustomerRepository implements CustomerRepositoryInterface {
 	async create(entity: Customer): Promise<void> {
 		await CustomerModel.create({
 			id: entity.id,
@@ -41,7 +41,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
 				rewardPoints: entity.rewardPoints,
 				active: entity.active,
 			},
-			{ where: { id: entity.id } }
+			{ where: { id: entity.id } },
 		);
 	}
 

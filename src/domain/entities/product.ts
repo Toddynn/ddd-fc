@@ -1,6 +1,6 @@
 import { DomainError } from '../../utils/errors/domain-error';
 
-export default class Product {
+export class Product {
 	private _id: string;
 	private _name: string;
 	private _price: number;
@@ -15,13 +15,13 @@ export default class Product {
 		this._price = price;
 	}
 
-	getId() {
+	get id() {
 		return this._id;
 	}
-	getName() {
+	get name() {
 		return this._name;
 	}
-	getPrice() {
+	get price() {
 		return this._price;
 	}
 

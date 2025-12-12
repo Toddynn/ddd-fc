@@ -1,4 +1,4 @@
-import Product from './product';
+import { Product } from './product';
 
 describe('Product unit tests', () => {
 	it('should throw error when id is empty', () => {
@@ -22,13 +22,13 @@ describe('Product unit tests', () => {
 	it('should change name', () => {
 		const product = new Product('1', 'Item 1', 100);
 		product.changeName('Item 2');
-		expect(product.getName()).toBe('Item 2');
+		expect(product.name).toBe('Item 2');
 	});
 
 	it('should change price', () => {
 		const product = new Product('1', 'Item 1', 100);
 		product.changePrice(200);
-		expect(product.getPrice()).toBe(200);
+		expect(product.price).toBe(200);
 	});
 
 	it('should throw error when price is less than 0', () => {

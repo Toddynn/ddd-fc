@@ -1,4 +1,4 @@
-import Customer from '../entities/customer';
-import RepositoryInterface from './repository.interface';
+import type { Customer } from '../entities/customer';
+import type { RepositoryInterface } from './repository.interface';
 
-export default interface CustomerRepositoryInterface extends RepositoryInterface<Customer> {}
+export interface CustomerRepositoryInterface extends RepositoryInterface<Customer> {}

@@ -1,4 +1,4 @@
-import OrderItem from './orderItem';
+import { OrderItem } from './orderItem';
 
 describe('OrderItem unit tests', () => {
 	it('should throw error when id is empty', () => {
@@ -34,6 +34,6 @@ describe('OrderItem unit tests', () => {
 	it('should change quantity', () => {
 		const orderItem = new OrderItem('1', '1', 'Item 1', 100, 2);
 		orderItem.changeQuantity(3);
-		expect(orderItem.getQuantity()).toBe(3);
+		expect(orderItem.quantity).toBe(3);
 	});
 });
