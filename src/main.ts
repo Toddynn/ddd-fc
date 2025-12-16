@@ -1,9 +1,9 @@
-import { Address } from './domain/entities/address';
-import { Customer } from './domain/entities/customer';
-import { Order } from './domain/entities/order';
-import { OrderItem } from './domain/entities/orderItem';
-import { Product } from './domain/entities/product';
-import { OrdersService } from './domain/services/orders.service';
+import { Order } from './domain/checkout/entities/order';
+import { OrderItem } from './domain/checkout/entities/orderItem';
+import { OrdersService } from './domain/checkout/services/orders.service';
+import { Customer } from './domain/customer/entities/customer';
+import { Address } from './domain/customer/value-objects/address';
+import { Product } from './domain/product/entities/product';
 
 // Customer aggregate
 const customer = new Customer('1', 'John', 'j@j.com', '123');
@@ -21,6 +21,6 @@ const orderItem2 = new OrderItem('2', product2.id, product2.name, product2.price
 
 const order = new Order('1', customer.id, [orderItem1, orderItem2]);
 
-const orderPlaced = OrdersService.placeOrder(customer, order.items);
+const orderPlaced = new OrdersService().placeOrder(customer, order.items);
 
 console.log(orderPlaced.getTotal());
